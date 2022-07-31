@@ -10,9 +10,9 @@ http://url-parser-client.s3-website.ca-central-1.amazonaws.com/
 ### Cacheing with DynamoDB
 
 ```
-#### Request URL: https://b4y0pxt7xc.execute-api.ca-central-1.amazonaws.com/dev/url-parse
-#### Request Method: POST
-#### Request Payload: 
+Request URL: https://b4y0pxt7xc.execute-api.ca-central-1.amazonaws.com/dev/url-parse
+Request Method: POST
+Request Payload: 
 {
     "url": "url to be parsed"
 }
