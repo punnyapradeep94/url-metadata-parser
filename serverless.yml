@@ -1,0 +1,46 @@
+service: parse
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ca-central-1
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "dynamoDb:DescribeTable"
+            - "dynamoDb:Query"
+            - "dynamoDb:PutItem"
+            - "dynamoDb:GetItem"
+          Resource: arn:aws:dynamodb:ca-central-1:*:*
+
+resources:
+  Resources:
+    UrlTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: url
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: url
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: 'urlMetadataCollection'
+
+functions:
+  parse:
+    handler: handler.parse
+    events:
+      - http:
+          path: url-parse
+          method: post
+          cors: true
