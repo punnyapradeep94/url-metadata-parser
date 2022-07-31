@@ -1,12 +1,12 @@
 # URL Parser
 
 ## User interface for URL Parser: 
-### Developed with React.JS
+### Developed with React.JS, Deployed in S3
 
 http://url-parser-client.s3-website.ca-central-1.amazonaws.com/
 
 
-## URL Parser RESTful API
+## URL Parser RESTful API , Used Serverless Framework for deployment
 ### Cacheing with DynamoDB
 
 ```
